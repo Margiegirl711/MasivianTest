@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUserMasivianTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListUserMasivianEmpty}" rendered="#{userMasivianController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{userMasivianController.items.rowCount > 0}">
+                    <h:outputText value="#{userMasivianController.pagination.pageFirstItem + 1}..#{userMasivianController.pagination.pageLastItem + 1}/#{userMasivianController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{userMasivianController.previous}" value="#{bundle.Previous} #{userMasivianController.pagination.pageSize}" rendered="#{userMasivianController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{userMasivianController.next}" value="#{bundle.Next} #{userMasivianController.pagination.pageSize}" rendered="#{userMasivianController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{userMasivianController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserMasivianTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserMasivianTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserMasivianTitle_username}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.username}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserMasivianTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserMasivianTitle_phone}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.phone}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserMasivianTitle_website}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.website}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Address}"/>
+                            </f:facet>
+                            <h:link outcome="/addressUserMasivian/List" value="Address"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.Company}"/>
+                            </f:facet>
+                            <h:link outcome="/companyUserMasivian/List" value="Company"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{userMasivianController.prepareView}" value="#{bundle.ListUserMasivianViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{userMasivianController.prepareEdit}" value="#{bundle.ListUserMasivianEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{userMasivianController.destroy}" value="#{bundle.ListUserMasivianDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{userMasivianController.create}" value="#{bundle.ConsumeWebService}" />
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListUserMasivianIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

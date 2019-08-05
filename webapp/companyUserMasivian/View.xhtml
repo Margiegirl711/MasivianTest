@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCompanyUserMasivianTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCompanyUserMasivianLabel_companyId}"/>
+                    <h:outputText value="#{companyUserMasivianController.selected.companyId}" title="#{bundle.ViewCompanyUserMasivianTitle_companyId}"/>
+                    <h:outputText value="#{bundle.ViewCompanyUserMasivianLabel_name}"/>
+                    <h:outputText value="#{companyUserMasivianController.selected.name}" title="#{bundle.ViewCompanyUserMasivianTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewCompanyUserMasivianLabel_catchphrase}"/>
+                    <h:outputText value="#{companyUserMasivianController.selected.catchphrase}" title="#{bundle.ViewCompanyUserMasivianTitle_catchphrase}"/>
+                    <h:outputText value="#{bundle.ViewCompanyUserMasivianLabel_bs}"/>
+                    <h:outputText value="#{companyUserMasivianController.selected.bs}" title="#{bundle.ViewCompanyUserMasivianTitle_bs}"/>
+                    <h:outputText value="#{bundle.ViewCompanyUserMasivianLabel_userId}"/>
+                    <h:outputText value="#{companyUserMasivianController.selected.userId}" title="#{bundle.ViewCompanyUserMasivianTitle_userId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{companyUserMasivianController.destroyAndView}" value="#{bundle.ViewCompanyUserMasivianDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCompanyUserMasivianEditLink}"/>
+                <br />
+                <h:commandLink action="#{companyUserMasivianController.prepareCreate}" value="#{bundle.ViewCompanyUserMasivianCreateLink}" />
+                <br />
+                <h:commandLink action="#{companyUserMasivianController.prepareList}" value="#{bundle.ViewCompanyUserMasivianShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCompanyUserMasivianIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

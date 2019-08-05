@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUserMasivianTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUserMasivianLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{userMasivianController.selected.id}" title="#{bundle.EditUserMasivianTitle_id}" required="true" requiredMessage="#{bundle.EditUserMasivianRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditUserMasivianLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{userMasivianController.selected.name}" title="#{bundle.EditUserMasivianTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditUserMasivianLabel_username}" for="username" />
+                    <h:inputText id="username" value="#{userMasivianController.selected.username}" title="#{bundle.EditUserMasivianTitle_username}" />
+                    <h:outputLabel value="#{bundle.EditUserMasivianLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{userMasivianController.selected.email}" title="#{bundle.EditUserMasivianTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditUserMasivianLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{userMasivianController.selected.phone}" title="#{bundle.EditUserMasivianTitle_phone}" />
+                    <h:outputLabel value="#{bundle.EditUserMasivianLabel_website}" for="website" />
+                    <h:inputText id="website" value="#{userMasivianController.selected.website}" title="#{bundle.EditUserMasivianTitle_website}" />
+                </h:panelGrid>
+                <h:commandLink action="#{userMasivianController.update}" value="#{bundle.EditUserMasivianSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUserMasivianViewLink}"/>
+                <br />
+                <h:commandLink action="#{userMasivianController.prepareList}" value="#{bundle.EditUserMasivianShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUserMasivianIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

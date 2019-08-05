@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCalculadoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCalculadoraLabel_valora}" for="valora" />
+                    <h:inputText id="valora" value="#{calculadoraController.selected.valora}" title="#{bundle.CreateCalculadoraTitle_valora}" />
+                    <h:outputLabel value="#{bundle.CreateCalculadoraLabel_valorb}" for="valorb" />
+                    <h:inputText id="valorb" value="#{calculadoraController.selected.valorb}" title="#{bundle.CreateCalculadoraTitle_valorb}" />
+                    <h:outputLabel value="#{bundle.CreateCalculadoraLabel_resultado}" for="resultado" />
+                    <h:inputText id="resultado" value="#{calculadoraController.selected.resultado}" title="#{bundle.CreateCalculadoraTitle_resultado}" />
+                    <h:outputLabel value="#{bundle.CreateCalculadoraLabel_mensaje}" for="mensaje" />
+                    <h:inputText id="mensaje" value="#{calculadoraController.selected.mensaje}" title="#{bundle.CreateCalculadoraTitle_mensaje}" />
+                    <h:outputLabel value="#{bundle.CreateCalculadoraLabel_operacionId}" for="operacionId" />
+                    <h:selectOneMenu id="operacionId" value="#{calculadoraController.selected.operacionId}" title="#{bundle.CreateCalculadoraTitle_operacionId}" >
+                        <f:selectItems value="#{operacionesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{calculadoraController.create}" value="#{bundle.CreateCalculadoraSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{calculadoraController.prepareList}" value="#{bundle.CreateCalculadoraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCalculadoraIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

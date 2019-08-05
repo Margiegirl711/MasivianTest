@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCalculadoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+        <h:form styleClass="jsfcrud_list_form">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:outputText escape="false" value="#{bundle.ListCalculadoraEmpty}" rendered="#{calculadoraController.items.rowCount == 0}"/>
+            <h:panelGroup rendered="#{calculadoraController.items.rowCount > 0}">
+                <h:outputText value="#{calculadoraController.pagination.pageFirstItem + 1}..#{calculadoraController.pagination.pageLastItem + 1}/#{calculadoraController.pagination.itemsCount}"/>&nbsp;
+                <h:commandLink action="#{calculadoraController.previous}" value="#{bundle.Previous} #{calculadoraController.pagination.pageSize}" rendered="#{calculadoraController.pagination.hasPreviousPage}"/>&nbsp;
+                <h:commandLink action="#{calculadoraController.next}" value="#{bundle.Next} #{calculadoraController.pagination.pageSize}" rendered="#{calculadoraController.pagination.hasNextPage}"/>&nbsp;
+                <h:dataTable value="#{calculadoraController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCalculadoraTitle_calculadoraId}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.calculadoraId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCalculadoraTitle_valora}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.valora}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCalculadoraTitle_valorb}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.valorb}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCalculadoraTitle_resultado}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.resultado}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCalculadoraTitle_mensaje}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.mensaje}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCalculadoraTitle_operacionId}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.operacionId}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="&nbsp;"/>
+                        </f:facet>
+                        <h:commandLink action="#{calculadoraController.prepareView}" value="#{bundle.ListCalculadoraViewLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{calculadoraController.prepareEdit}" value="#{bundle.ListCalculadoraEditLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{calculadoraController.destroy}" value="#{bundle.ListCalculadoraDestroyLink}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+            <br />
+            <h:commandLink action="#{calculadoraController.prepareCreate}" value="#{bundle.ListCalculadoraCreateLink}"/>
+            <br />
+            <br />
+            <h:link outcome="/index" value="#{bundle.ListCalculadoraIndexLink}"/>
+        </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

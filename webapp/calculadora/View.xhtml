@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCalculadoraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCalculadoraLabel_calculadoraId}"/>
+                    <h:outputText value="#{calculadoraController.selected.calculadoraId}" title="#{bundle.ViewCalculadoraTitle_calculadoraId}"/>
+                    <h:outputText value="#{bundle.ViewCalculadoraLabel_valora}"/>
+                    <h:outputText value="#{calculadoraController.selected.valora}" title="#{bundle.ViewCalculadoraTitle_valora}"/>
+                    <h:outputText value="#{bundle.ViewCalculadoraLabel_valorb}"/>
+                    <h:outputText value="#{calculadoraController.selected.valorb}" title="#{bundle.ViewCalculadoraTitle_valorb}"/>
+                    <h:outputText value="#{bundle.ViewCalculadoraLabel_resultado}"/>
+                    <h:outputText value="#{calculadoraController.selected.resultado}" title="#{bundle.ViewCalculadoraTitle_resultado}"/>
+                    <h:outputText value="#{bundle.ViewCalculadoraLabel_mensaje}"/>
+                    <h:outputText value="#{calculadoraController.selected.mensaje}" title="#{bundle.ViewCalculadoraTitle_mensaje}"/>
+                    <h:outputText value="#{bundle.ViewCalculadoraLabel_operacionId}"/>
+                    <h:outputText value="#{calculadoraController.selected.operacionId}" title="#{bundle.ViewCalculadoraTitle_operacionId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{calculadoraController.destroyAndView}" value="#{bundle.ViewCalculadoraDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCalculadoraEditLink}"/>
+                <br />
+                <h:commandLink action="#{calculadoraController.prepareCreate}" value="#{bundle.ViewCalculadoraCreateLink}" />
+                <br />
+                <h:commandLink action="#{calculadoraController.prepareList}" value="#{bundle.ViewCalculadoraShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCalculadoraIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

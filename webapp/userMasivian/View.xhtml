@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUserMasivianTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUserMasivianLabel_id}"/>
+                    <h:outputText value="#{userMasivianController.selected.id}" title="#{bundle.ViewUserMasivianTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewUserMasivianLabel_name}"/>
+                    <h:outputText value="#{userMasivianController.selected.name}" title="#{bundle.ViewUserMasivianTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewUserMasivianLabel_username}"/>
+                    <h:outputText value="#{userMasivianController.selected.username}" title="#{bundle.ViewUserMasivianTitle_username}"/>
+                    <h:outputText value="#{bundle.ViewUserMasivianLabel_email}"/>
+                    <h:outputText value="#{userMasivianController.selected.email}" title="#{bundle.ViewUserMasivianTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewUserMasivianLabel_phone}"/>
+                    <h:outputText value="#{userMasivianController.selected.phone}" title="#{bundle.ViewUserMasivianTitle_phone}"/>
+                    <h:outputText value="#{bundle.ViewUserMasivianLabel_website}"/>
+                    <h:outputText value="#{userMasivianController.selected.website}" title="#{bundle.ViewUserMasivianTitle_website}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userMasivianController.destroyAndView}" value="#{bundle.ViewUserMasivianDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUserMasivianEditLink}"/>
+                <br />
+                <h:commandLink action="#{userMasivianController.prepareCreate}" value="#{bundle.ViewUserMasivianCreateLink}" />
+                <br />
+                <h:commandLink action="#{userMasivianController.prepareList}" value="#{bundle.ViewUserMasivianShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUserMasivianIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

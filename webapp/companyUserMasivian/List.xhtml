@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCompanyUserMasivianTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCompanyUserMasivianEmpty}" rendered="#{companyUserMasivianController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{companyUserMasivianController.items.rowCount > 0}">
+                    <h:outputText value="#{companyUserMasivianController.pagination.pageFirstItem + 1}..#{companyUserMasivianController.pagination.pageLastItem + 1}/#{companyUserMasivianController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{companyUserMasivianController.previous}" value="#{bundle.Previous} #{companyUserMasivianController.pagination.pageSize}" rendered="#{companyUserMasivianController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{companyUserMasivianController.next}" value="#{bundle.Next} #{companyUserMasivianController.pagination.pageSize}" rendered="#{companyUserMasivianController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{companyUserMasivianController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompanyUserMasivianTitle_companyId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.companyId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompanyUserMasivianTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompanyUserMasivianTitle_catchphrase}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.catchphrase}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompanyUserMasivianTitle_bs}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bs}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompanyUserMasivianTitle_userId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{companyUserMasivianController.prepareView}" value="#{bundle.ListCompanyUserMasivianViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{companyUserMasivianController.prepareEdit}" value="#{bundle.ListCompanyUserMasivianEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{companyUserMasivianController.destroy}" value="#{bundle.ListCompanyUserMasivianDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{companyUserMasivianController.prepareCreate}" value="#{bundle.ListCompanyUserMasivianCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCompanyUserMasivianIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

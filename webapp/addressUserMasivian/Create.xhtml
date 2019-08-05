@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAddressUserMasivianTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAddressUserMasivianLabel_addressId}" for="addressId" />
+                    <h:inputText id="addressId" value="#{addressUserMasivianController.selected.addressId}" title="#{bundle.CreateAddressUserMasivianTitle_addressId}" required="true" requiredMessage="#{bundle.CreateAddressUserMasivianRequiredMessage_addressId}"/>
+                    <h:outputLabel value="#{bundle.CreateAddressUserMasivianLabel_street}" for="street" />
+                    <h:inputText id="street" value="#{addressUserMasivianController.selected.street}" title="#{bundle.CreateAddressUserMasivianTitle_street}" />
+                    <h:outputLabel value="#{bundle.CreateAddressUserMasivianLabel_suite}" for="suite" />
+                    <h:inputText id="suite" value="#{addressUserMasivianController.selected.suite}" title="#{bundle.CreateAddressUserMasivianTitle_suite}" />
+                    <h:outputLabel value="#{bundle.CreateAddressUserMasivianLabel_city}" for="city" />
+                    <h:inputText id="city" value="#{addressUserMasivianController.selected.city}" title="#{bundle.CreateAddressUserMasivianTitle_city}" />
+                    <h:outputLabel value="#{bundle.CreateAddressUserMasivianLabel_zipcode}" for="zipcode" />
+                    <h:inputText id="zipcode" value="#{addressUserMasivianController.selected.zipcode}" title="#{bundle.CreateAddressUserMasivianTitle_zipcode}" />
+                    <h:outputLabel value="#{bundle.CreateAddressUserMasivianLabel_userId}" for="userId" />
+                    <h:selectOneMenu id="userId" value="#{addressUserMasivianController.selected.userId}" title="#{bundle.CreateAddressUserMasivianTitle_userId}" >
+                        <f:selectItems value="#{userMasivianController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{addressUserMasivianController.create}" value="#{bundle.CreateAddressUserMasivianSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{addressUserMasivianController.prepareList}" value="#{bundle.CreateAddressUserMasivianShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAddressUserMasivianIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGeoAddressUserMasivianTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGeoAddressUserMasivianLabel_geoId}" for="geoId" />
+                    <h:inputText id="geoId" value="#{geoAddressUserMasivianController.selected.geoId}" title="#{bundle.CreateGeoAddressUserMasivianTitle_geoId}" required="true" requiredMessage="#{bundle.CreateGeoAddressUserMasivianRequiredMessage_geoId}"/>
+                    <h:outputLabel value="#{bundle.CreateGeoAddressUserMasivianLabel_lat}" for="lat" />
+                    <h:inputText id="lat" value="#{geoAddressUserMasivianController.selected.lat}" title="#{bundle.CreateGeoAddressUserMasivianTitle_lat}" />
+                    <h:outputLabel value="#{bundle.CreateGeoAddressUserMasivianLabel_lng}" for="lng" />
+                    <h:inputText id="lng" value="#{geoAddressUserMasivianController.selected.lng}" title="#{bundle.CreateGeoAddressUserMasivianTitle_lng}" />
+                    <h:outputLabel value="#{bundle.CreateGeoAddressUserMasivianLabel_addressId}" for="addressId" />
+                    <h:selectOneMenu id="addressId" value="#{geoAddressUserMasivianController.selected.addressId}" title="#{bundle.CreateGeoAddressUserMasivianTitle_addressId}" >
+                        <f:selectItems value="#{addressUserMasivianController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateGeoAddressUserMasivianLabel_userId}" for="userId" />
+                    <h:selectOneMenu id="userId" value="#{geoAddressUserMasivianController.selected.userId}" title="#{bundle.CreateGeoAddressUserMasivianTitle_userId}" >
+                        <f:selectItems value="#{userMasivianController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{geoAddressUserMasivianController.create}" value="#{bundle.CreateGeoAddressUserMasivianSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{geoAddressUserMasivianController.prepareList}" value="#{bundle.CreateGeoAddressUserMasivianShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateGeoAddressUserMasivianIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

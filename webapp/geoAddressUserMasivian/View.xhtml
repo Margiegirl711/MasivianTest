@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewGeoAddressUserMasivianTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewGeoAddressUserMasivianLabel_geoId}"/>
+                    <h:outputText value="#{geoAddressUserMasivianController.selected.geoId}" title="#{bundle.ViewGeoAddressUserMasivianTitle_geoId}"/>
+                    <h:outputText value="#{bundle.ViewGeoAddressUserMasivianLabel_lat}"/>
+                    <h:outputText value="#{geoAddressUserMasivianController.selected.lat}" title="#{bundle.ViewGeoAddressUserMasivianTitle_lat}"/>
+                    <h:outputText value="#{bundle.ViewGeoAddressUserMasivianLabel_lng}"/>
+                    <h:outputText value="#{geoAddressUserMasivianController.selected.lng}" title="#{bundle.ViewGeoAddressUserMasivianTitle_lng}"/>
+                    <h:outputText value="#{bundle.ViewGeoAddressUserMasivianLabel_addressId}"/>
+                    <h:outputText value="#{geoAddressUserMasivianController.selected.addressId}" title="#{bundle.ViewGeoAddressUserMasivianTitle_addressId}"/>
+                    <h:outputText value="#{bundle.ViewGeoAddressUserMasivianLabel_userId}"/>
+                    <h:outputText value="#{geoAddressUserMasivianController.selected.userId}" title="#{bundle.ViewGeoAddressUserMasivianTitle_userId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{geoAddressUserMasivianController.destroyAndView}" value="#{bundle.ViewGeoAddressUserMasivianDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewGeoAddressUserMasivianEditLink}"/>
+                <br />
+                <h:commandLink action="#{geoAddressUserMasivianController.prepareCreate}" value="#{bundle.ViewGeoAddressUserMasivianCreateLink}" />
+                <br />
+                <h:commandLink action="#{geoAddressUserMasivianController.prepareList}" value="#{bundle.ViewGeoAddressUserMasivianShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewGeoAddressUserMasivianIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
