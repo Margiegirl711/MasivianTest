@@ -88,21 +88,12 @@
 	"LNG" VARCHAR2(2000 BYTE)
    ) ;
 
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('1','1','5','6','11',null);
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('2','2','15','21','1',null);
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('3','3','5','4','20',null);
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('4','4','10','12','-2',null);
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('5','4','52','2','50',null);
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('6','3','15','2','30',null);
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('27','3','5','2','10',null);
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('8','1','10','4','14',null);
-Insert into CALCULADORA (CALCULADORA_ID,OPERACION_ID,VALORA,VALORB,RESULTADO,MENSAJE) values ('28','3','5','2','10',null);
 
 Insert into OPERACIONES (OPERACION_ID,DESCRIPCION) values ('1','Adicion');
 Insert into OPERACIONES (OPERACION_ID,DESCRIPCION) values ('2','Division');
 Insert into OPERACIONES (OPERACION_ID,DESCRIPCION) values ('3','Multiplicacion');
 Insert into OPERACIONES (OPERACION_ID,DESCRIPCION) values ('4','Sustraccion');
-
+commit;
 --------------------------------------------------------
 --  DDL for Index USER_MASIVIAN_PK
 --------------------------------------------------------
